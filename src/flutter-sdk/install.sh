@@ -28,14 +28,14 @@ apt update &&
     ninja-build \
     pkg-config
 
-su - "$_REMOTE_USER"
-
 # get google chrome
 cd /tmp && 
   wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
-  apt -f install ./google-chrome-stable_current_amd64.deb &&
+  apt -f install -y --no-install-recommends ./google-chrome-stable_current_amd64.deb &&
   rm google-chrome-stable_current_amd64.deb && 
   cd -
+
+su - "$_REMOTE_USER"
 
 # Get latest releases
 mkdir -p "$PUB_CACHE"
@@ -52,10 +52,12 @@ curl -O "$RELEASES_URL/$FLUTTER_ARCHIVE" &&
       chmod --recursive ug+rwx $FLUTTER_HOME &&
         git config --global --add safe.directory $FLUTTER_HOME
 
+set +e
 # Clean up
 cd "~" && 
   rm -rf "$TMP_DIR" &&
     apt clean
+set -e
 
 # Verify installation
 su - "$_REMOTE_USER"
