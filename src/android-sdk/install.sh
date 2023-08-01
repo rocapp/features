@@ -35,18 +35,15 @@ if [[ $PLATFORMS != "none" ]]; then
     PACKAGES+=("platforms;android-$PLATFORMS")
 fi
 
-if [[ ${BUILD-TOOLS} = "TOOLS" ]]; then
-        BUILD-TOOLS=latest;
-fi
-if [[ ${BUILD-TOOLS} != "none" ]]; then
-    PACKAGES+=("build-tools;${BUILD-TOOLS}")
+if [[ ${BUILD_TOOLS} != "none" ]]; then
+    PACKAGES+=("build-tools;${BUILD_TOOLS}")
 fi
 
 # append android cmdline-tools to path
 PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin
 
 sdkmanager --install "${PACKAGES[@]}"
-# sdkmanager --install "platforms;android-30"
-# sdkmanager --install "build-tools;30.0.2"
+# sdkmanager --install "platforms;android-33"
+# sdkmanager --install "build-tools;34.0.0"
 # sdkmanager --install "extras;android;m2repository"
 # sdkmanager --install "extras;google;m2repository"
