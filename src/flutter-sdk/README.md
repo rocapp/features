@@ -7,7 +7,7 @@ Install the Flutter SDK
 
 ```json
 "features": {
-    "ghcr.io/jarrodcolburn/features/flutter-sdk:0": {}
+    "ghcr.io/rocapp/features/flutter-sdk:0": {}
 }
 ```
 
@@ -16,6 +16,13 @@ Install the Flutter SDK
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
 | release | Flutter release. Currently synonymous with channel. But in the future, a release may also be a specific version of Flutter, e.g. 3.7.1 | string | stable |
+
+## Customizations
+
+### VS Code Extensions
+
+- `Dart-Code.dart-code`
+- `Dart-Code.flutter`
 
 ## OS Support 
 This Feature should work on recent versions of Debian/Ubuntu.
@@ -29,4 +36,4 @@ Only Flutter SDK tools are installed. Not Android/
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/jarrodcolburn/features/blob/main/src/flutter-sdk/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/rocapp/features/blob/main/src/flutter-sdk/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
