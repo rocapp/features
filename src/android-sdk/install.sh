@@ -10,7 +10,7 @@ FOLDER="cmdline-tools"
 
 # Install Dependencies
 DEBIAN_FRONTEND="noninteractive" apt update && 
-    apt install --no-install-recommends -y openjdk-11-jdk-headless unzip wget &&
+    apt install --no-install-recommends -y openjdk-17-jre-headless unzip wget &&
         apt clean
 
 # install -d -m 0755 -o "$_REMOTE_USER" -g "$_REMOTE_USER" "$ANDROID_HOME/cmdline-tools"
