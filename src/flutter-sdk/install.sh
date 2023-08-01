@@ -40,7 +40,8 @@ FLUTTER_ARCHIVE=$(jq -r ".releases[] | select(.hash==$HASH) | .archive" releases
 curl -O "$RELEASES_URL/$FLUTTER_ARCHIVE" &&
   tar -xf "$TMP_DIR/$(basename "$FLUTTER_ARCHIVE")" -C "$(dirname "$FLUTTER_HOME")" &&
     chown --recursive "$USER:$USER" "$FLUTTER_HOME" &&
-      git config --global --add safe.directory "$FLUTTER_HOME"
+      chmod --recursive ug+rwx "$FLUTTER_HOME" &&
+        git config --global --add safe.directory "$FLUTTER_HOME"
 
 # Clean up
 cd "~" && 
