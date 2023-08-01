@@ -28,6 +28,14 @@ apt update &&
     pkg-config
 
 su - "$_REMOTE_USER"
+
+# get google chrome
+cd /tmp && 
+  wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &&
+  dpkg -i google-chrome-stable_current_amd64.deb &&
+  rm google-chrome-stable_current_amd64.deb && 
+  cd -
+
 # Get latest releases
 mkdir -p "$PUB_CACHE"
 mkdir -p "$TMP_DIR"
@@ -39,9 +47,9 @@ HASH=$(jq ".current_release.$RELEASE" $RELEASES_JSON)
 FLUTTER_ARCHIVE=$(jq -r ".releases[] | select(.hash==$HASH) | .archive" releases_linux.json)
 curl -O "$RELEASES_URL/$FLUTTER_ARCHIVE" &&
   tar -xf "$TMP_DIR/$(basename "$FLUTTER_ARCHIVE")" -C "$(dirname "$FLUTTER_HOME")" &&
-    chown --recursive "$USER:$USER" "$FLUTTER_HOME" &&
-      chmod --recursive ug+rwx "$FLUTTER_HOME" &&
-        git config --global --add safe.directory "$FLUTTER_HOME"
+    chown --recursive "$_REMOTE_USER:$_REMOTE_USER" "$(dirname "$FLUTTER_HOME")" &&
+      chmod --recursive ug+rwx "$(dirname "$FLUTTER_HOME")" &&
+        git config --global --add safe.directory "$(dirname "$FLUTTER_HOME")"
 
 # Clean up
 cd "~" && 
@@ -49,5 +57,5 @@ cd "~" &&
     apt clean
 
 # Verify installation
-su - "$_REMOTE_USER" 
+su - "$_REMOTE_USER"
 flutter doctor
