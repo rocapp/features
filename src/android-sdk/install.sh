@@ -2,6 +2,7 @@
 # shellcheck disable=SC2039
 set -e
 
+
 LATEST="9477386"
 URL="https://dl.google.com/android/repository"
 # shellcheck disable=SC2027
@@ -34,6 +35,9 @@ if [[ $PLATFORMS != "none" ]]; then
     PACKAGES+=("platforms;android-$PLATFORMS")
 fi
 
+if [[ ${BUILD-TOOLS} = "TOOLS" ]]; then
+        BUILD-TOOLS=latest;
+fi
 if [[ ${BUILD-TOOLS} != "none" ]]; then
     PACKAGES+=("build-tools;${BUILD-TOOLS}")
 fi
