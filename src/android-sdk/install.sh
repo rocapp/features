@@ -9,9 +9,9 @@ ARCHIVE="commandlinetools-linux-"$LATEST"_latest.zip"
 FOLDER="cmdline-tools"
 
 # Install Dependencies
-DEBIAN_FRONTEND="noninteractive" sudo apt update && 
-sudo apt install --no-install-recommends -y openjdk-11-jdk-headless unzip wget &&
-apt clean
+DEBIAN_FRONTEND="noninteractive" apt update && 
+    apt install --no-install-recommends -y openjdk-11-jdk-headless unzip wget &&
+        apt clean
 
 # install -d -m 0755 -o "$_REMOTE_USER" -g "$_REMOTE_USER" "$ANDROID_HOME/cmdline-tools"
 
@@ -38,6 +38,8 @@ if [[ ${BUILD-TOOLS} != "none" ]]; then
     PACKAGES+=("build-tools;${BUILD-TOOLS}")
 fi
 
+# append android cmdline-tools to path
+PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin
 
 sdkmanager --install "${PACKAGES[@]}"
 # sdkmanager --install "platforms;android-30"
