@@ -2,7 +2,7 @@
     "name": "Flutter SDK: With Dart and Flutter extensions",
     "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
     "features": {
-        "ghcr.io/jarrodcolburn/features/flutter-sdk:0": {}
+        "ghcr.io/rocapp/features/flutter-sdk:0": {}
     },
     "customizations": {
         "vscode": {
