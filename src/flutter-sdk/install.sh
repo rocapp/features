@@ -11,6 +11,7 @@ RELEASES_JSON="releases_linux.json"
 # Install dependencies
 apt update &&
   apt install -y --no-install-recommends \
+    libgtk-3-dev \
     ca-certificates \
     bash \
     curl \
