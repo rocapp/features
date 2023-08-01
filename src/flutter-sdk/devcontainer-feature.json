@@ -5,6 +5,7 @@
     "description": "Install the Flutter SDK",
     "documentationURL": "https://github.com/rocapp/features/blob/main/src/flutter-sdk",
     "containerEnv": {
+        "CHROME_EXECUTABLE": "/usr/bin/google-chrome",
         "FLUTTER_HOME" : "$_REMOTE_USER_HOME/flutter",
         "FLUTTER_ROOT": "$FLUTTER_HOME",
         "PUB_CACHE"  : "$FLUTTER_HOME/.pub-cache",
