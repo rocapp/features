@@ -9,8 +9,23 @@ TMP_DIR="/tmp/flutter"
 RELEASES_JSON="releases_linux.json"
 
 # Install dependencies
-apt update
-apt install -y --no-install-recommends ca-certificates bash curl file git unzip xz-utils zip libglu1-mesa jq xz-utils
+apt update &&
+  apt install -y --no-install-recommends \
+    ca-certificates \
+    bash \
+    curl \
+    file \
+    git \
+    unzip \
+    xz-utils \
+    zip \
+    libglu1-mesa \
+    jq \
+    xz-utils \
+    clang \
+    cmake \
+    ninja-build \
+    pkg-config
 
 su - "$_REMOTE_USER"
 # Get latest releases
