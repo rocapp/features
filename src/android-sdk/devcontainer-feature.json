@@ -1,12 +1,12 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Android SDK",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
         "ANDROID_SDK_ROOT": "$ANDROID_HOME",
-        "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/platform-tools"
+        "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
     },
     "options": {
         "platforms": {
