@@ -40,7 +40,7 @@ if [[ ${BUILD_TOOLS} != "none" ]]; then
 fi
 
 emulator_platform=${PLATFORMS:-34}
-system_images_string="system-images;android-${platform};google_apis;x86_64"
+system_images_string="system-images;android-${emulator_platform};google_apis;x86_64"
 if [[ ${EMULATOR} = "true" ]]; then
     PACKAGES+=("$system_images_string")
 fi
