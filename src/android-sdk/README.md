@@ -15,9 +15,10 @@ Android SDK
 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
-| platforms | Platform version to install | string | 33 |
-| build-tools | Build tools version to install | string | 33.0.2 |
+| platforms | Platform version to install | string | 34 |
+| build-tools | Build tools version to install | string | 34.0.0 |
 | emulator | Install emulator | boolean | false |
+| system-images | emulator system images to install. | string | android-34;google_apis;x86_64 |
 
 
 
