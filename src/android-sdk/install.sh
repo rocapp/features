@@ -39,8 +39,12 @@ if [[ ${BUILD_TOOLS} != "none" ]]; then
     PACKAGES+=("build-tools;${BUILD_TOOLS}")
 fi
 
-# append android cmdline-tools to path
-PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin
+if [[ ${SYSTEM_IMAGES} != "none" ]]; then
+    PACKAGES+=("system-images;${SYSTEM_IMAGES}")
+fi
+
+# append android cmdline-tools, emulator to path
+PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin:$ANDROID_HOME/emulator
 
 sdkmanager --install "${PACKAGES[@]}"
 # sdkmanager --install "platforms;android-33"
