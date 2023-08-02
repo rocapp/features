@@ -47,7 +47,7 @@ fi
 PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin:$ANDROID_HOME/emulator
 
 # accept all licenses
-(yes "" 2>/dev/null || true) | sdkmanager --licenses
+yes | sdkmanager --licenses
 # install packages
 sdkmanager --install "${PACKAGES[@]}"
 
