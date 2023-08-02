@@ -1,7 +1,7 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Android SDK",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
