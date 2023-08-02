@@ -52,6 +52,11 @@ curl -O "$RELEASES_URL/$FLUTTER_ARCHIVE" &&
       chmod --recursive ug+rwx $FLUTTER_HOME &&
         git config --global --add safe.directory $FLUTTER_HOME
 
+# permissions (for microsoft ubuntu image)
+set +e 
+chown -R $(whoami) /flutter/bin/cache/lockfile
+set -e
+
 set +e
 # Clean up
 cd "${_REMOTE_USER_HOME}" && 
