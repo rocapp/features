@@ -49,7 +49,7 @@ fi
 PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin:$ANDROID_HOME/emulator
 
 # accept all licenses
-yes | sdkmanager --licenses
+yes | sudo sdkmanager --licenses 1> /dev/null 2> /dev/null
 # install packages
 sdkmanager --install "${PACKAGES[@]}"
 
