@@ -49,11 +49,20 @@ fi
 PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin:$ANDROID_HOME/emulator
 
 # accept all licenses
-yes | sudo sdkmanager --licenses 1> /dev/null 2> /dev/null
+echo -e "accepting licenses..." && \
+yes | sudo sdkmanager --licenses 1> /dev/null 2> /dev/null && \
+    echo -e "...accepted all licenses."
+
 # install packages
-sdkmanager --install "${PACKAGES[@]}"
+echo -e "installing packages..." && \
+    sdkmanager --install "${PACKAGES[@]}" && \
+    echo -e "...installed packages."
 
 # create emulator
 if [[ ${EMULATOR} = "true" ]]; then
-    avdmanager create avd --name ${EMULATOR_NAME} --abi google_apis/x86_64 -k "$system_images_string"
+    echo -e "creating emulator..." && \
+        avdmanager create avd --name ${EMULATOR_NAME} --abi google_apis/x86_64 -k "$system_images_string" && \
+        echo -e "...created emulator."
 fi
+
+echo -e "\n...done with install (android-sdk)."
