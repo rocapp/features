@@ -35,6 +35,7 @@ if [[ $PLATFORMS != "none" ]]; then
     PACKAGES+=("platforms;android-$PLATFORMS")
     if [[ $EMULATOR != "false" ]]; then
         PACKAGES+=("system-images;android-$PLATFORMS;google_apis;x86_64")
+        PACKAGES+=("emulator")
         PATH=$PATH:$ANDROID_HOME/emulator
     fi
 fi
@@ -48,17 +49,11 @@ fi
 PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin
 
 # install packages
-echo -e "installing packages..." && \
-    yes | \
-    sdkmanager --install "${PACKAGES[@]}" \
-    --licenses 1> /dev/null 2> /dev/null && \
-        echo -e "...installed packages."
+sdkmanager --install "${PACKAGES[@]}"
 
 # create emulator
 if [[ $EMULATOR = "true" ]]; then
-    echo -e "creating emulator..." && \
-        avdmanager create avd --name "$EMULATOR_NAME" --abi google_apis/x86_64 -k "system-images;android-$PLATFORMS;google_apis;x86_64" && \
-        echo -e "...created emulator."
+    avdmanager create avd --name "$EMULATOR_NAME" --abi google_apis/x86_64 -k "system-images;android-$PLATFORMS;google_apis;x86_64"
 fi
 
 echo -e "\n...done with install (android-sdk)."

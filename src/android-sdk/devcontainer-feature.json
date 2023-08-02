@@ -1,11 +1,13 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "description": "Android SDK",
     "containerEnv": {
         "ANDROID_HOME": "/opt/android-sdk",
-        "ANDROID_SDK_ROOT": "$ANDROID_HOME",
+        "ANDROID_SDK_ROOT": "/opt/android-sdk",
+        "ANDROID_SDK_HOME": "/opt/android-sdk",
+        "ANDROID_AVD_HOME": "/opt/android-sdk/avd",
         "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
     },
     "options": {
