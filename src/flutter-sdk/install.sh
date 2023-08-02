@@ -54,7 +54,7 @@ curl -O "$RELEASES_URL/$FLUTTER_ARCHIVE" &&
 
 set +e
 # Clean up
-cd "~" && 
+cd "${_REMOTE_USER_HOME}" && 
   rm -rf "$TMP_DIR" &&
     apt clean
 set -e
