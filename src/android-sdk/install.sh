@@ -46,8 +46,10 @@ fi
 # append android cmdline-tools, emulator to path
 PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin:$ANDROID_HOME/emulator
 
+# install packages
 sdkmanager --install "${PACKAGES[@]}"
-# sdkmanager --install "platforms;android-33"
-# sdkmanager --install "build-tools;34.0.0"
-# sdkmanager --install "extras;android;m2repository"
-# sdkmanager --install "extras;google;m2repository"
+
+# create emulator
+if [[ ${EMULATOR} = "true" ]]; then
+    avdmanager create avd --name ${EMULATOR_NAME} --abi google_apis/x86_64 -k "system-images;${PLATFORMS:-android-34;google_apis;x86_64}"
+fi

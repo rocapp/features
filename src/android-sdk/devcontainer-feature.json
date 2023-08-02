@@ -103,8 +103,13 @@
         },
         "emulator": {
             "type": "boolean",
-            "default": false,
+            "default": true,
             "description": "Install emulator"
+        },
+        "emulator-name": {
+            "type": "string",
+            "default": "devcontainer-android",
+            "description": "a name for the emulator AVD"
         },
         "system-images": {
             "default": "android-34;google_apis;x86_64",
