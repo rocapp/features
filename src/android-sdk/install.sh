@@ -39,8 +39,10 @@ if [[ ${BUILD_TOOLS} != "none" ]]; then
     PACKAGES+=("build-tools;${BUILD_TOOLS}")
 fi
 
-if [[ ${SYSTEM_IMAGES} != "none" ]]; then
-    PACKAGES+=("system-images;${SYSTEM_IMAGES}")
+emulator_platform=${PLATFORMS:-34}
+system_images_string="system-images;android-${platform};google_apis;x86_64"
+if [[ ${EMULATOR} = "true" ]]; then
+    PACKAGES+=("$system_images_string")
 fi
 
 # append android cmdline-tools, emulator to path
@@ -53,5 +55,5 @@ sdkmanager --install "${PACKAGES[@]}"
 
 # create emulator
 if [[ ${EMULATOR} = "true" ]]; then
-    avdmanager create avd --name ${EMULATOR_NAME} --abi google_apis/x86_64 -k "system-images;${PLATFORMS:-android-34;google_apis;x86_64}"
+    avdmanager create avd --name ${EMULATOR_NAME} --abi google_apis/x86_64 -k "$system_images_string"
 fi

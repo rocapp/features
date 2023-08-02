@@ -110,15 +110,6 @@
             "type": "string",
             "default": "devcontainer-android",
             "description": "a name for the emulator AVD"
-        },
-        "system-images": {
-            "default": "android-34;google_apis;x86_64",
-            "type": "string",
-            "description": "emulator system images to install.",
-            "enum": [
-                "none",
-                "android-34;google_apis;x86_64"
-            ]
         }
     }
 }
