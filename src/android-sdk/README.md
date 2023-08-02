@@ -17,8 +17,8 @@ Android SDK
 |-----|-----|-----|-----|
 | platforms | Platform version to install | string | 34 |
 | build-tools | Build tools version to install | string | 34.0.0 |
-| emulator | Install emulator | boolean | false |
-| system-images | emulator system images to install. | string | android-34;google_apis;x86_64 |
+| emulator | Install emulator | boolean | true |
+| emulator-name | a name for the emulator AVD | string | devcontainer-android |
 
 
 
