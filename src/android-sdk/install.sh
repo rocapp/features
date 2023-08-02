@@ -33,35 +33,31 @@ wget -q "$URL/$ARCHIVE"
 PACKAGES=("platform-tools" "patcher;v4")
 if [[ $PLATFORMS != "none" ]]; then
     PACKAGES+=("platforms;android-$PLATFORMS")
+    if [[ $EMULATOR != "false" ]]; then
+        PACKAGES+=("system-images;android-$PLATFORMS;google_apis;x86_64")
+        PATH=$PATH:$ANDROID_HOME/emulator
+    fi
 fi
 
 if [[ ${BUILD_TOOLS} != "none" ]]; then
     PACKAGES+=("build-tools;${BUILD_TOOLS}")
-fi
-
-emulator_platform=${PLATFORMS:-34}
-system_images_string="system-images;android-${emulator_platform};google_apis;x86_64"
-if [[ ${EMULATOR} = "true" ]]; then
-    PACKAGES+=("$system_images_string")
+    PATH=$PATH:$ANDROID_HOME/build-tools/$BUILD_TOOLS
 fi
 
 # append android cmdline-tools, emulator to path
-PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin:$ANDROID_HOME/emulator
-
-# accept all licenses
-echo -e "accepting licenses..." && \
-yes | sudo sdkmanager --licenses 1> /dev/null 2> /dev/null && \
-    echo -e "...accepted all licenses."
+PATH=$PATH:$ANDROID_HOME/$FOLDER/latest/bin
 
 # install packages
 echo -e "installing packages..." && \
-    sdkmanager --install "${PACKAGES[@]}" && \
-    echo -e "...installed packages."
+    yes | \
+    sdkmanager --install "${PACKAGES[@]}" \
+    --licenses 1> /dev/null 2> /dev/null && \
+        echo -e "...installed packages."
 
 # create emulator
-if [[ ${EMULATOR} = "true" ]]; then
+if [[ $EMULATOR = "true" ]]; then
     echo -e "creating emulator..." && \
-        avdmanager create avd --name ${EMULATOR_NAME} --abi google_apis/x86_64 -k "$system_images_string" && \
+        avdmanager create avd --name "$EMULATOR_NAME" --abi google_apis/x86_64 -k "system-images;android-$PLATFORMS;google_apis;x86_64" && \
         echo -e "...created emulator."
 fi
 
