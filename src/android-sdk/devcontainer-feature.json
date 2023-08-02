@@ -1,20 +1,21 @@
 {
     "name": "Android SDK",
     "id": "android-sdk",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Android SDK",
     "containerEnv": {
         "ANDROID_HOME": "/usr/local/lib/android",
         "ANDROID_SDK_ROOT": "$ANDROID_HOME",
-        "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools"
+        "PATH": "$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator"
     },
     "options": {
         "platforms": {
             "type": "string",
             "description": "Platform version to install",
-            "default": "33",
+            "default": "34",
             "enum": [
                 "none",
+                "34",
                 "33",
                 "32",
                 "31",
@@ -47,11 +48,12 @@
             ]
         },
         "build-tools": {
-            "default": "33.0.2",
+            "default": "34.0.0",
             "type": "string",
             "description": "Build tools version to install",
             "enum": [
                 "none",
+                "34.0.0",
                 "30.0.3",
                 "33.0.1",
                 "33.0.2",
@@ -103,6 +105,15 @@
             "type": "boolean",
             "default": false,
             "description": "Install emulator"
+        },
+        "system-images": {
+            "default": "android-34;google_apis;x86_64",
+            "type": "string",
+            "description": "emulator system images to install.",
+            "enum": [
+                "none",
+                "android-34;google_apis;x86_64"
+            ]
         }
     }
 }
